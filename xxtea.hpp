@@ -172,7 +172,7 @@ inline void decode(bytes &v, const bytes &k) {
  *  Encrypts text using Corrected Block TEA (aka xxtea) algorithm
  * @param plaintext String to be encrypted. Handles utf-8.
  * @param password Password to be used for encryption (only 128 bits are used).
- * @return Encrypted text encoded as safe base 64 string (per rfc 4648)
+ * @return Encrypted text as uint32_t vector
  */
 inline bytes encrypt(const std::string &plaintext, const std::string &password) {
     auto text = internal::to_blocks<std::uint32_t>(plaintext);
