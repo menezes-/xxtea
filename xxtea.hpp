@@ -124,11 +124,13 @@ inline void encode(bytes &v, const bytes &k) {
         unsigned long e = (sum >> 2U) & 3U;
         for (p = 0; p < n - 1; ++p) {
             y = v[p + 1];
-            z = v[p] += XXTEA_MX;
+            v[p] += XXTEA_MX;
+            z = v[p];
 
         }
         y = v[0];
-        z = v[n - 1] += XXTEA_MX;
+        v[n - 1] += XXTEA_MX;
+        z = v[n - 1];
 
     }
 
@@ -157,11 +159,13 @@ inline void decode(bytes &v, const bytes &k) {
         unsigned long e = (sum >> 2U) & 3U;
         for (p = n - 1; p > 0; --p) {
             z = v[p - 1];
-            y = v[p] -= XXTEA_MX;
+            v[p] -= XXTEA_MX;
+            y = v[p];
 
         }
         z = v[n - 1];
-        y = v[0] -= XXTEA_MX;
+        v[0] -= XXTEA_MX;
+        y = v[0];
         sum -= internal::delta;
     }
 
