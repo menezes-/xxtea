@@ -178,9 +178,7 @@ inline bytes encrypt(const std::string &plaintext, const std::string &password) 
     auto text = internal::to_blocks<std::uint32_t>(plaintext);
     auto key = internal::to_blocks<std::uint32_t>(password);
 
-
     encode(text, key);
-
 
     return text;
 
@@ -196,7 +194,6 @@ inline bytes encrypt(const std::string &plaintext, const std::string &password) 
 inline std::string decrypt(bytes &encrypted_string, const std::string &password) {
 
     auto key = internal::to_blocks<std::uint32_t>(password);
-
 
     decode(encrypted_string, key);
 
