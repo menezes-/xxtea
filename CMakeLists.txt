@@ -13,3 +13,12 @@ find_library(PHP_CPP NAMES libphpcpp phpcpp)
 
 target_link_libraries(xxtea-php PRIVATE ${PHP_CPP_LIBRARIES})
 target_include_directories(xxtea-php PRIVATE ${PHP_CPP_INCLUDE_DIRS})
+
+set_target_properties(xxtea-php PROPERTIES POSITION_INDEPENDENT_CODE ON)
+
+target_compile_options(xxtea-php PRIVATE
+                       -Wall -Wextra -Wno-unused-function
+                       $<$<CONFIG:Debug>:-g -O0>
+                       $<$<CONFIG:Release>:-O2 -s>
+                       $<$<CONFIG:RelWithDebInfo>:-g -O2>
+                       )
