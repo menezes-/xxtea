@@ -6,9 +6,13 @@
 
 
 int main() {
-    std::string test{"(哈)?"};
-    std::string encrypted {xxtea::encrypt(test, "pass")};
-    std::cout << encrypted  << '\n';
-    std::cout << xxtea::decrypt(encrypted, "pass") << '\n';
+    std::string test{"teste"};
+
+    auto encrypted = xxtea::encrypt(test, "pasass");
+    std::cout << xxtea::decrypt(encrypted, "pasass") << '\n';
+
+
+
+
     return 0;
 }
