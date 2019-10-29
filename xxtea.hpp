@@ -155,7 +155,7 @@ inline void decode(bytes &v, const bytes &k) {
     unsigned long sum = rounds * internal::delta;
     std::size_t p;
 
-    while (sum != 0) {
+    for (; sum != 0; sum -= internal::delta) {
         unsigned long e = (sum >> 2U) & 3U;
         for (p = n - 1; p > 0; --p) {
             z = v[p - 1];
@@ -166,7 +166,6 @@ inline void decode(bytes &v, const bytes &k) {
         z = v[n - 1];
         v[0] -= XXTEA_MX;
         y = v[0];
-        sum -= internal::delta;
     }
 
 }
@@ -191,7 +190,7 @@ inline bytes encrypt(const std::string &plaintext, const std::string &password) 
 
 /**
  * Decrypts text using Corrected Block TEA (xxtea) algorithm
- * @param encrypted_string safe base64 (rfc 4648) encrypted string @see encrypt
+ * @param encrypted_string @see encrypt
  * @param password password used to encrypt the string
  * @return utf8 encoded string
  */
