@@ -10,7 +10,7 @@ Php::Value xxtea_encrypt(Php::Parameters &params) {
     std::string key = params[1];
 
     if (plaintext.empty()) {
-        return xxtea::bytes{};
+        return std::string{""};
     }
 
     if (key.empty()) {
