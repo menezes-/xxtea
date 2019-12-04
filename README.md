@@ -29,9 +29,6 @@ int main() {
 There's also a PHP extension inside xxtea-php, you can compile it using CMake. To be able to compile it you must have [PHP-CPP](https://github.com/CopernicaMarketingSoftware/PHP-CPP) installed.
 Once you have PHP-CPP installed build and install the PHP extension is very simple: 
 ```bash
-mkdir build
-cd build
-cmake -DCMAKE_BUILD_TYPE=Release .. .
 make
 sudo make install
 # enable it on your php installation eg: 
