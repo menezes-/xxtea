@@ -34,6 +34,8 @@ cd build
 cmake -DCMAKE_BUILD_TYPE=Release .. .
 make
 sudo make install
+# enable it on your php installation eg: 
+sudo cp xxtea.ini /usr/local/etc/php/conf.d/
 ```
 And you're done
 
