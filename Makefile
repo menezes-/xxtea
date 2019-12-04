@@ -86,7 +86,7 @@ LINKER              =   c++
 #   with a list of all flags that should be passed to the linker.
 #
 
-COMPILER_FLAGS      =   -Wall -c -O3 -fpic -o -Wall -Wextra -Wno-unused-function
+COMPILER_FLAGS      =   -Wall -c -O3 -fpic -o
 LINKER_FLAGS        =   -shared
 LINKER_DEPENDENCIES =   -lphpcpp
 
@@ -109,7 +109,7 @@ MKDIR               =   mkdir -p
 #   file, with the .cpp extension being replaced by .o.
 #
 
-SOURCES             =   $(wildcard *.cpp)
+SOURCES             =   $(wildcard xxtea-*.cpp)
 OBJECTS             =   $(SOURCES:%.cpp=%.o)
 
 #
