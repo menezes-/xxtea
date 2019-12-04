@@ -19,6 +19,6 @@ set_target_properties(xxtea-php PROPERTIES POSITION_INDEPENDENT_CODE ON)
 target_compile_options(xxtea-php PRIVATE
                        -Wall -Wextra -Wno-unused-function
                        $<$<CONFIG:Debug>:-g -O0>
-                       $<$<CONFIG:Release>:-O2 -s>
-                       $<$<CONFIG:RelWithDebInfo>:-g -O2>
+                       $<$<CONFIG:Release>:-O3 -s>
+                       $<$<CONFIG:RelWithDebInfo>:-g -O3>
                        )
