@@ -56,7 +56,7 @@ extern "C" {
 PHPCPP_EXPORT void *get_module() {
     // static(!) Php::Extension object that should stay in memory
     // for the entire duration of the process (that's why it's static)
-    static Php::Extension extension("xxtea_php", "1.0");
+    static Php::Extension extension("xxtea", "1.0");
 
     extension.add<xxtea_encrypt>("xxtea_encrypt",
                                  {Php::ByVal("data", Php::Type::String),

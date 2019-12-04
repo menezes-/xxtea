@@ -3,7 +3,7 @@ project(xxtea)
 
 add_executable(xxtea main.cpp xxtea.hpp)
 
-target_compile_features(xxtea PRIVATE  cxx_std_11)
+target_compile_features(xxtea PRIVATE cxx_std_11)
 
 add_library(xxtea-php SHARED xxtea-php.cpp)
 
@@ -22,3 +22,19 @@ target_compile_options(xxtea-php PRIVATE
                        $<$<CONFIG:Release>:-O3 -s>
                        $<$<CONFIG:RelWithDebInfo>:-g -O3>
                        )
+
+execute_process(
+        COMMAND php-config --extension-dir
+        OUTPUT_VARIABLE PHP_EXTENSION_DIR
+        OUTPUT_STRIP_TRAILING_WHITESPACE
+)
+
+execute_process(
+        COMMAND php-config --ini-dir
+        OUTPUT_VARIABLE PHP_INI_DIR
+        OUTPUT_STRIP_TRAILING_WHITESPACE
+)
+
+
+install(TARGETS xxtea-php DESTINATION ${PHP_EXTENSION_DIR})
+install(FILES xxtea.ini DESTINATION ${PHP_INI_DIR})
