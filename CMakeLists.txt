@@ -32,9 +32,13 @@ execute_process(
 execute_process(
         COMMAND php-config --ini-dir
         OUTPUT_VARIABLE PHP_INI_DIR
+        RESULT_VARIABLE ret
         OUTPUT_STRIP_TRAILING_WHITESPACE
 )
-
+if (NOT ret EQUAL "0")
+    message(WARNING "php-config doesn't support --ini-dir guessin it's /usr/local/etc/php/conf.d/")
+    set(PHP_INI_DIR, "/usr/local/etc/php/conf.d/")
+endif ()
 
 install(TARGETS xxtea-php DESTINATION ${PHP_EXTENSION_DIR})
 install(FILES xxtea.ini DESTINATION ${PHP_INI_DIR})
