@@ -54,7 +54,8 @@ std::vector<BlockType> to_blocks(std::string string) {
 
     auto number_of_bits = string.size() * CHAR_BIT;
     std::vector<BlockType> blocks{};
-    auto n_blocks = std::max(number_of_bits / block_size, 1UL);
+    auto n_blocks = number_of_bits / block_size;
+    n_blocks = std::max(n_blocks, decltype(n_blocks){1});
     blocks.resize(n_blocks, 0);
 
     constexpr auto fit_size = block_size / CHAR_BIT;
